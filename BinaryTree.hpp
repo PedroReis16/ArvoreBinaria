@@ -11,6 +11,8 @@ public :
 	std::vector<int> getInOrder();
 	std::vector<int> getPreOrder();
 	std::vector<int> getPostOrder();
+	int depth();
+	int height();
 
 private:
 	std::vector<int> itensList;
@@ -19,5 +21,7 @@ private:
 	void inOrder(Node* current);
 	void preOrder(Node* current);
 	void postOrder(Node* current);
+	int depthRecursive(Node* current);
+	int heightRecursive(Node* current);
 };
 

@@ -40,6 +40,13 @@ std::vector<int> BinaryTree::getPostOrder() {
 	list = itensList;
 	return list;
 }
+int BinaryTree::depth() {
+	return depthRecursive(root);
+}
+int BinaryTree::height() {
+	return heightRecursive(root);
+}
+
 //métodos privados	
 Node* BinaryTree::insertRecursive(Node* current, int value) {
 	if (current == nullptr) {
@@ -76,4 +83,25 @@ void BinaryTree::postOrder(Node* current) {
 		postOrder(current->right);
 		itensList.push_back(current->value);
 	}
+}
+int BinaryTree::depthRecursive(Node* current) {
+	if (current == nullptr) {
+		return -1;
+	}
+
+	int leftDepth = depthRecursive(current->left);
+	int rightDepth = depthRecursive(current->right);
+
+	return 1 + std::max(leftDepth, rightDepth);
+}
+
+int BinaryTree::heightRecursive(Node* current) {
+	if (current == nullptr) {
+		return 0;
+	}
+
+	int leftHeight = heightRecursive(current->left);
+	int rightHeight = heightRecursive(current->right);
+
+	return 1 + std::max(leftHeight, rightHeight);
 }
