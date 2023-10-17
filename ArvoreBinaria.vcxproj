@@ -127,7 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ArvoreBinaria.cpp" />
+    <ClCompile Include="BinaryTree.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Node.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BinaryTree.hpp" />
+    <ClInclude Include="Node.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
