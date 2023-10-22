@@ -5,23 +5,20 @@
 #include "TreeInfos.hpp"
 #include "BinaryTree.hpp"
 
-
-
-
-std::vector<int> getRandomNumbers(int size) {
+static std::vector<int> getRandomNumbers() {
 	std::vector<int> saida;
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<>intDistribution(1, 1000000);
 
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < 5000; i++) {
 		int numero = intDistribution(gen);
 		saida.push_back(numero);
 	}
 
 	return saida;
 }
-TreeInfo* action(int size) {
+TreeInfo* action(int size, std::vector<int> list) {
 	std::chrono::steady_clock::time_point start;
 	std::chrono::steady_clock::time_point end;
 	TreeInfo* info = new TreeInfo();
@@ -38,8 +35,8 @@ TreeInfo* action(int size) {
 	info->Description = description;
 
 	start = std::chrono::steady_clock::now();
-	for (int i = 0; i < getRandomNumbers(size).size(); i++) {
-		tree->insert(i);
+	for (int i = 0; i < size; i++) {
+		tree->insert(list[i]);
 	}
 	end = std::chrono::steady_clock::now();
 
@@ -82,9 +79,10 @@ TreeInfo* action(int size) {
 
 int main()
 {
-	TreeInfo* thousandInfo = action(1000);
-	TreeInfo* treeInfo = action(3000);
-	TreeInfo* fiveInfo = action(5000);
+	std::vector<int> list = getRandomNumbers();
+	TreeInfo* thousandInfo = action(1000, list);
+	TreeInfo* treeInfo = action(3000, list);
+	TreeInfo* fiveInfo = action(5000, list);
 
 
 	thousandInfo->getInfos();
